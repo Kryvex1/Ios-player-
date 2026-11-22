@@ -1,0 +1,94 @@
+package dev.anilbeesetti.nextplayer.core.model
+
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class PlayerPreferences(
+    val resume: Resume = Resume.YES,
+    val rememberPlayerBrightness: Boolean = false,
+    val playerBrightness: Float = 0.5f,
+    val minDurationForFastSeek: Long = 120000L,
+    val rememberSelections: Boolean = true,
+    val playerScreenOrientation: ScreenOrientation = ScreenOrientation.VIDEO_ORIENTATION,
+    val playerVideoZoom: VideoContentScale = VideoContentScale.BEST_FIT,
+    val defaultPlaybackSpeed: Float = 1.0f,
+    val autoplay: Boolean = true,
+    val autoPip: Boolean = true,
+    val autoBackgroundPlay: Boolean = false,
+    val loopMode: LoopMode = LoopMode.OFF,
+
+    // Controls (Gestures)
+    @Deprecated(message = "Use individual enableVolumeSwipeGesture and enableBrightnessSwipeGesture instead")
+    val useSwipeControls: Boolean = true,
+    val enableVolumeSwipeGesture: Boolean = true,
+    val enableBrightnessSwipeGesture: Boolean = true,
+    val useSeekControls: Boolean = true,
+    val useZoomControls: Boolean = true,
+    val enablePanGesture: Boolean = false,
+    val doubleTapGesture: DoubleTapGesture = DoubleTapGesture.BOTH,
+    val useLongPressControls: Boolean = false,
+    val longPressControlsSpeed: Float = 2.0f,
+    val seekIncrement: Int = DEFAULT_SEEK_INCREMENT,
+    val seekSensitivity: Float = DEFAULT_SEEK_SENSITIVITY,
+    val volumeGestureSensitivity: Float = DEFAULT_VOLUME_GESTURE_SENSITIVITY,
+    val brightnessGestureSensitivity: Float = DEFAULT_BRIGHTNESS_GESTURE_SENSITIVITY,
+
+    // Player Interface
+    val controllerAutoHideTimeout: Int = DEFAULT_CONTROLLER_AUTO_HIDE_TIMEOUT,
+    val controlButtonsPosition: ControlButtonsPosition = ControlButtonsPosition.LEFT,
+    val hidePlayerButtonsBackground: Boolean = false,
+    val useMaterialYouControls: Boolean = false,
+    val showRemainingTime: Boolean = false,
+    val showStatusBar: Boolean = true,
+    val wavingTimeline: Boolean = false,
+    val showTimelineGlassBackground: Boolean = false,
+
+    // MPV & Advanced Configuration
+    val mpvConfigStorageUri: String = "",
+    val mpvConf: String = DEFAULT_MPV_CONF,
+    val inputConf: String = DEFAULT_INPUT_CONF,
+
+    // Audio Preferences
+    val preferredAudioLanguage: String = "",
+    val pauseOnHeadsetDisconnect: Boolean = true,
+    val requireAudioFocus: Boolean = true,
+    val showSystemVolumePanel: Boolean = false,
+    val enableVolumeBoost: Boolean = false,
+
+    // Subtitle Preferences
+    val useSystemCaptionStyle: Boolean = false,
+    val preferredSubtitleLanguage: String = "",
+    val subtitleTextEncoding: String = "",
+    val subtitleTextSize: Int = DEFAULT_SUBTITLE_TEXT_SIZE,
+    val subtitleBackground: Boolean = false,
+    val subtitleFont: Font = Font.DEFAULT,
+    val subtitleTextBold: Boolean = true,
+    val subtitleBold: Boolean = false,
+    val applyEmbeddedStyles: Boolean = true,
+    val customRegularFontUri: String? = null,
+    val customBoldFontUri: String? = null,
+    val customHindiFontUri: String? = null,
+    val subtitleAnimation: SubtitleAnimation = SubtitleAnimation.NONE,
+    val subtitleBottomPadding: Int = DEFAULT_SUBTITLE_BOTTOM_PADDING,
+    val subtitleBackgroundOpacity: Float = DEFAULT_SUBTITLE_BACKGROUND_OPACITY,
+    val subtitleBackgroundCornerRadius: Int = DEFAULT_SUBTITLE_BACKGROUND_CORNER_RADIUS,
+    val subtitleBackgroundVerticalPadding: Int = DEFAULT_SUBTITLE_BACKGROUND_VERTICAL_PADDING,
+    val subtitleTextColor: Long = DEFAULT_SUBTITLE_TEXT_COLOR,
+) {
+
+    companion object {
+        const val DEFAULT_SEEK_INCREMENT = 10
+        const val DEFAULT_SEEK_SENSITIVITY = 0.50f
+        const val DEFAULT_VOLUME_GESTURE_SENSITIVITY = 0.50f
+        const val DEFAULT_BRIGHTNESS_GESTURE_SENSITIVITY = 0.50f
+        const val DEFAULT_SUBTITLE_TEXT_SIZE = 16
+        const val DEFAULT_SUBTITLE_BOTTOM_PADDING = 16
+        const val DEFAULT_SUBTITLE_BACKGROUND_OPACITY = 0.72f
+        const val DEFAULT_SUBTITLE_BACKGROUND_CORNER_RADIUS = 8
+        const val DEFAULT_SUBTITLE_BACKGROUND_VERTICAL_PADDING = 6
+        const val DEFAULT_SUBTITLE_TEXT_COLOR = 0xFFFFFFFFL
+        const val DEFAULT_CONTROLLER_AUTO_HIDE_TIMEOUT = 4
+        const val DEFAULT_MPV_CONF = "alang=hi,hin,en,eng\nslang=hi,hin,en,eng\nhwdec=auto-safe"
+        const val DEFAULT_INPUT_CONF = "RIGHT seek 5\nLEFT seek -5\nUP add volume 5\nDOWN add volume -5"
+    }
+}

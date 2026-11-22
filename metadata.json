@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix AfterPlayer",
+  "description": "Imported from GitHub: Kryvex1/AfterPlayer",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
